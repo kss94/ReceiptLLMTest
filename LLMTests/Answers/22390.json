@@ -1,0 +1,61 @@
+{
+  "receiptDate": "2026-08-16",
+  "receiptTime": "15:34:53",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "코엑스몰점",
+  "address": null,
+  "totalOrderPrice": 14000,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-V)바닐라L",
+      "productPrice": 6600,
+      "productUnit": 1,
+      "productUnitPrice": 6600,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "옵션",
+      "productPrice": 800,
+      "productUnit": 1,
+      "productUnitPrice": 800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "쿠폰",
+      "productPrice": -800,
+      "productUnit": 1,
+      "productUnitPrice": -800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "G)바닐라C콜드브루",
+      "productPrice": 6600,
+      "productUnit": 1,
+      "productUnitPrice": 6600,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 13200,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 13200
+    }
+  ],
+  "review": "NONEED"
+}

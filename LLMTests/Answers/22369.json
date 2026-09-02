@@ -1,0 +1,127 @@
+{
+  "receiptDate": "2026-08-18",
+  "receiptTime": "09:38:47",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "동교점",
+  "address": null,
+  "totalOrderPrice": 29700,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-T)밀크카라멜",
+      "productPrice": 5800,
+      "productUnit": 1,
+      "productUnitPrice": 5800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -1740,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "한입에쏙고구마",
+      "productPrice": 3800,
+      "productUnit": 1,
+      "productUnitPrice": 3800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "한입에쏙알밤",
+      "productPrice": 3300,
+      "productUnit": 1,
+      "productUnitPrice": 3300,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "하트파이",
+      "productPrice": 3200,
+      "productUnit": 1,
+      "productUnitPrice": 3200,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "쿠키 스트로우 단품",
+      "productPrice": 800,
+      "productUnit": 1,
+      "productUnitPrice": 800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "쿠키 스트로우 단품",
+      "productPrice": 800,
+      "productUnit": 1,
+      "productUnitPrice": 800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "블루/요거트190ML",
+      "productPrice": 4500,
+      "productUnit": 1,
+      "productUnitPrice": 4500,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "너티 쿠키(단품)",
+      "productPrice": 1500,
+      "productUnit": 1,
+      "productUnitPrice": 1500,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "너티 쿠키(단품)",
+      "productPrice": 1500,
+      "productUnit": 1,
+      "productUnitPrice": 1500,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "블루/요거트190ML",
+      "productPrice": 4500,
+      "productUnit": 1,
+      "productUnitPrice": 4500,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 27960,
+  "paymentItems": [
+    {
+      "paymentMethod": "계좌 간편결제",
+      "paymentName": null,
+      "paymentPrice": 27960
+    }
+  ],
+  "review": "NONEED"
+}

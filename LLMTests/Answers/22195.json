@@ -1,0 +1,41 @@
+{
+  "receiptDate": "2026-08-13",
+  "receiptTime": "10:31:29",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "용인흥덕DT점",
+  "address": null,
+  "totalOrderPrice": 16400,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-G)아메리카노",
+      "productPrice": 10600,
+      "productUnit": 2,
+      "productUnitPrice": 5300,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "I-G)카페 라떼",
+      "productPrice": 5800,
+      "productUnit": 1,
+      "productUnitPrice": 5800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 16400,
+  "paymentItems": [
+    {
+      "paymentMethod": "KAKAOTALK",
+      "paymentName": null,
+      "paymentPrice": 16400
+    }
+  ],
+  "review": "NONEED"
+}

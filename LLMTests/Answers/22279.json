@@ -1,0 +1,56 @@
+{
+  "receiptDate": "2026-08-18",
+  "receiptTime": "08:43:40",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "이수역사거리점",
+  "address": null,
+  "totalOrderPrice": 17100,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-T)아메리카노",
+      "productPrice": 4700,
+      "productUnit": 1,
+      "productUnitPrice": 4700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "크랜베리SW",
+      "productPrice": 6500,
+      "productUnit": 1,
+      "productUnitPrice": 6500,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "I-T)자몽 허니 블랙 티",
+      "productPrice": 5900,
+      "productUnit": 1,
+      "productUnitPrice": 5900,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "개인컵 할인",
+      "discountPrice": -800
+    }
+  ],
+  "totalPaymentPrice": 16300,
+  "paymentItems": [
+    {
+      "paymentMethod": "KAKAOTALK",
+      "paymentName": null,
+      "paymentPrice": 16300
+    }
+  ],
+  "review": "NONEED"
+}

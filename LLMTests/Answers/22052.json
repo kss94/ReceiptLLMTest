@@ -1,0 +1,84 @@
+{
+  "receiptDate": "2026-08-17",
+  "receiptTime": "20:40:04",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "계양구청점",
+  "address": null,
+  "totalOrderPrice": 23400,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-T)1/2D아메리카노",
+      "productPrice": 4668,
+      "productUnit": 1,
+      "productUnitPrice": 4668,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -4668,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "T)D아메리카노",
+      "productPrice": 8166,
+      "productUnit": 1,
+      "productUnitPrice": 8166,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -4666,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "I-T)시그니처초콜릿",
+      "productPrice": 4666,
+      "productUnit": 1,
+      "productUnitPrice": 4666,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -4666,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "T)시그니처초콜릿",
+      "productPrice": 5900,
+      "productUnit": 1,
+      "productUnitPrice": 5900,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 9400,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 5620
+    },
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 3780
+    }
+  ],
+  "review": "NONEED"
+}

@@ -1,0 +1,47 @@
+{
+  "receiptDate": "2026-08-16",
+  "receiptTime": "12:15:17",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "샛강역점",
+  "address": null,
+  "totalOrderPrice": 11000,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "T)아메리카노",
+      "productPrice": 4700,
+      "productUnit": 1,
+      "productUnitPrice": 4700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "G)카페 모카",
+      "productPrice": 6300,
+      "productUnit": 1,
+      "productUnitPrice": 6300,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -5700,
+          "optionUnit": 1
+        }
+      ]
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 5300,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 5300
+    }
+  ],
+  "review": "NONEED"
+}

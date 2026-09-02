@@ -1,0 +1,53 @@
+{
+  "receiptDate": "2026-09-02",
+  "receiptTime": "14:40:09",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "부산서면점",
+  "address": null,
+  "totalOrderPrice": 13400,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "T)블루베리요거트 B",
+      "productPrice": 4355,
+      "productUnit": 1,
+      "productUnitPrice": 4355,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -4355,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "I-T)블랙GL",
+      "productPrice": 9045,
+      "productUnit": 1,
+      "productUnitPrice": 9045,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -4355,
+          "optionUnit": 1
+        }
+      ]
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 4690,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 4690
+    }
+  ],
+  "review": "NONEED"
+}

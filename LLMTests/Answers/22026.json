@@ -1,0 +1,62 @@
+{
+  "receiptDate": "2026-08-17",
+  "receiptTime": "10:31:16",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "문정하비오점",
+  "address": null,
+  "totalOrderPrice": 7400,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "T)플랫화이트",
+      "productPrice": 5800,
+      "productUnit": 1,
+      "productUnitPrice": 5800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "2바닐라시럽",
+          "optionPrice": 800,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "옵션",
+      "productPrice": 800,
+      "productUnit": 1,
+      "productUnitPrice": 800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "쿠폰",
+      "productPrice": -800,
+      "productUnit": 1,
+      "productUnitPrice": -800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "할인",
+      "discountPrice": -1160
+    }
+  ],
+  "totalPaymentPrice": 5440,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 5440
+    }
+  ],
+  "review": "NONEED"
+}

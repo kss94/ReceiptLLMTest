@@ -1,0 +1,136 @@
+{
+  "receiptDate": "2026-08-18",
+  "receiptTime": "08:17:10",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "정동점",
+  "address": null,
+  "totalOrderPrice": 71400,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "T)아메리카노",
+      "productPrice": 4700,
+      "productUnit": 1,
+      "productUnitPrice": 4700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "I-T)아메리카노",
+      "productPrice": 4700,
+      "productUnit": 1,
+      "productUnitPrice": 4700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "I-T)D아메리카노",
+      "productPrice": 10000,
+      "productUnit": 2,
+      "productUnitPrice": 5000,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "I-T)카페 라떼",
+      "productPrice": 5200,
+      "productUnit": 1,
+      "productUnitPrice": 5200,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "크랜베리SW",
+      "productPrice": 6500,
+      "productUnit": 1,
+      "productUnitPrice": 6500,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "스크램블 에그 SW",
+      "productPrice": 5700,
+      "productUnit": 1,
+      "productUnitPrice": 5700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "햄루꼴라SW",
+      "productPrice": 13800,
+      "productUnit": 2,
+      "productUnitPrice": 6900,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "I-T)아메리카노",
+      "productPrice": 4700,
+      "productUnit": 1,
+      "productUnitPrice": 4700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "스크램블 에그 SW",
+      "productPrice": 5700,
+      "productUnit": 1,
+      "productUnitPrice": 5700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "I-T)이메리카노",
+      "productPrice": 4700,
+      "productUnit": 1,
+      "productUnitPrice": 4700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "스크램블 에그 SW",
+      "productPrice": 5700,
+      "productUnit": 1,
+      "productUnitPrice": 5700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "할인",
+      "discountPrice": -4500
+    }
+  ],
+  "totalPaymentPrice": 66900,
+  "paymentItems": [
+    {
+      "paymentMethod": "신용카드 간편결제",
+      "paymentName": null,
+      "paymentPrice": 66900
+    }
+  ],
+  "review": "NONEED"
+}

@@ -1,0 +1,52 @@
+{
+  "receiptDate": "2026-08-18",
+  "receiptTime": "06:36:40",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "인천계산역DT점",
+  "address": null,
+  "totalOrderPrice": 13300,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-V)카페 라떼",
+      "productPrice": 7400,
+      "productUnit": 1,
+      "productUnitPrice": 7400,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -6000,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "바질토마토베이글SW",
+      "productPrice": 5900,
+      "productUnit": 1,
+      "productUnitPrice": 5900,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 7300,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 6500
+    },
+    {
+      "paymentMethod": "KT",
+      "paymentName": null,
+      "paymentPrice": 800
+    }
+  ],
+  "review": "NONEED"
+}

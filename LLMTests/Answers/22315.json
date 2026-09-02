@@ -1,0 +1,37 @@
+{
+  "receiptDate": "2026-08-18",
+  "receiptTime": "09:02:09",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "김천시청DT점",
+  "address": null,
+  "totalOrderPrice": 6600,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-G)카페라떼",
+      "productPrice": 6600,
+      "productUnit": 1,
+      "productUnitPrice": 6600,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -2540,
+          "optionUnit": 1
+        }
+      ]
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 4060,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 4060
+    }
+  ],
+  "review": "NONEED"
+}

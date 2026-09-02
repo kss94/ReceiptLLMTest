@@ -1,0 +1,36 @@
+{
+  "receiptDate": "2026-08-18",
+  "receiptTime": "08:46:42",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "국기원사거리점",
+  "address": null,
+  "totalOrderPrice": 6100,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-V)아메리카노",
+      "productPrice": 6100,
+      "productUnit": 1,
+      "productUnitPrice": 6100,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "개인컵 할인",
+      "discountPrice": -400
+    }
+  ],
+  "totalPaymentPrice": 5700,
+  "paymentItems": [
+    {
+      "paymentMethod": "신용카드",
+      "paymentName": "삼성카드",
+      "paymentPrice": 5700
+    }
+  ],
+  "review": "NONEED"
+}
