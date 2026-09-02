@@ -1,10 +1,9 @@
 ﻿using Google.GenAI;
 using Google.GenAI.Types;
-using System.Text.RegularExpressions;
 
 namespace LLMTests;
 
-public class UnitTest1
+public class UnitTest1(ITestOutputHelper output)
 {
     const string APIKEY = "AQ.Ab8RN6Lr0pUVMpIW9HlA-q25iJbKWg07SExdnrziPrj1FURubQ";
     const string AIMODEL = "gemini-3.5-flash-lite";
@@ -61,15 +60,28 @@ public class UnitTest1
         // Act
         var res = await _client.Models.GenerateContentAsync(AIMODEL, content, config, TestContext.Current.CancellationToken);
         Assert.NotNull(res.Text);
-        string actual = res.Text.Replace("햄루폴라", "햄루꼴라")
-            .Replace("햄루콜라", "햄루꼴라");
+        string actual = res.Text;
 
         // Assert
-        Assert.Equal(Normalize(expected), Normalize(actual));
+        var report = ReceiptDiff.Compare(expected, actual);
+        output.WriteLine($"리포트: {Save(name, actual, report)}");
+        if (report.Fuzzy.Count > 0) output.WriteLine(string.Join(System.Environment.NewLine, report.Fuzzy));
+        Assert.True(report.Ok, $"{name}: {report.Diffs.Count}건 불일치{System.Environment.NewLine}{string.Join(System.Environment.NewLine, report.Diffs)}");
     }
 
-    static string Normalize(string s)
+    /// 응답 원본과 차이 목록을 출력 폴더에 남긴다. 프롬프트를 고칠 때 이 파일들만 보면 된다.
+    static string Save(string name, string actual, ReceiptDiff.Report report)
     {
-        return Regex.Replace(s ?? "", @"\s+", "");
+        string dir = Path.Combine(AppContext.BaseDirectory, "Diffs");
+        Directory.CreateDirectory(dir);
+
+        System.IO.File.WriteAllText(Path.Combine(dir, $"{name}.actual.json"), actual);
+
+        string diffPath = Path.Combine(dir, $"{name}.diff.txt");
+        string body = report.ToString();
+        if (body.Length == 0) System.IO.File.Delete(diffPath);
+        else System.IO.File.WriteAllText(diffPath, body);
+
+        return dir;
     }
 }
