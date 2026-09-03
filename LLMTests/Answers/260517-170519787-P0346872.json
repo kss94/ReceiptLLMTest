@@ -1,0 +1,51 @@
+{
+  "receiptDate": "2026-05-17",
+  "receiptTime": "12:17:40",
+  "receiptCnt": 2,
+  "storeName": "STARBUCKS",
+  "storeSubName": "평촌한림대병원점",
+  "address": null,
+  "totalOrderPrice": 10600,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-G)아메리카노",
+      "productPrice": 5300,
+      "productUnit": 1,
+      "productUnitPrice": 5300,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "I-G)아메리카노",
+      "productPrice": 5300,
+      "productUnit": 1,
+      "productUnitPrice": 5300,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "할인",
+      "discountPrice": -3180
+    }
+  ],
+  "totalPaymentPrice": 7420,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 2720
+    },
+    {
+      "paymentMethod": "카카오톡선물하기",
+      "paymentName": null,
+      "paymentPrice": 4700
+    }
+  ],
+  "review": "NONEED"
+}

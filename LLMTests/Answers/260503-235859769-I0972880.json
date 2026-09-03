@@ -1,0 +1,41 @@
+{
+  "receiptDate": "2026-05-02",
+  "receiptTime": "15:34:12",
+  "receiptCnt": 2,
+  "storeName": "STARBUCKS",
+  "storeSubName": "안양운동장사거리DT점",
+  "address": null,
+  "totalOrderPrice": 7000,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "G)제주말차F",
+      "productPrice": 7100,
+      "productUnit": 1,
+      "productUnitPrice": 7100,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "통신사제휴할인",
+      "discountPrice": -100
+    }
+  ],
+  "totalPaymentPrice": 7000,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 6500
+    },
+    {
+      "paymentMethod": "KT",
+      "paymentName": null,
+      "paymentPrice": 500
+    }
+  ],
+  "review": "NONEED"
+}

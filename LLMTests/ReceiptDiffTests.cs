@@ -122,6 +122,18 @@ public class ReceiptDiffTests
     }
 
     [Fact]
+    public void couponCalc는_채점하지_않는다()
+    {
+        string actual = Expected.Replace(
+            "\"totalOrderPrice\": 6600",
+            "\"couponCalc\": { \"couponTotal\": 2540, \"productRowCount\": 1, \"share\": 2540 }, \"totalOrderPrice\": 6600");
+
+        var report = Compare(actual);
+
+        Assert.True(report.Ok, report.ToString());
+    }
+
+    [Fact]
     public void JSON이_깨지면_파싱_실패를_보고한다()
     {
         var report = Compare("{ \"totalOrderPrice\": ");

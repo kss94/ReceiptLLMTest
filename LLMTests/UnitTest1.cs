@@ -26,6 +26,13 @@ public class UnitTest1(ITestOutputHelper output)
     [InlineData("22390")]
     [InlineData("22435")]
     [InlineData("22784546")]
+    [InlineData("260503-235859769-I0972880")]
+    [InlineData("260510-131001182-K0122596")]
+    [InlineData("260517-164718136-P0042412")]
+    [InlineData("260517-170519787-P0346872")]
+    [InlineData("260517-224843885-H0120915")]
+    [InlineData("260524-202859302-K1029150")]
+    [InlineData("260529-170927864-I0038317")]
     public async Task Starbucks(string name)
     {
         string systemPrompt = System.IO.File.ReadAllText("StarbucksSystemPrompt.txt");

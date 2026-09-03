@@ -1,0 +1,57 @@
+{
+  "receiptDate": "2026-05-27",
+  "receiptTime": "09:30:58",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "유성선병원점",
+  "address": null,
+  "totalOrderPrice": 17000,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-T)카페라떼",
+      "productPrice": 5200,
+      "productUnit": 1,
+      "productUnitPrice": 5200,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -5200,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "I-T)아메리카노",
+      "productPrice": 4700,
+      "productUnit": 1,
+      "productUnitPrice": 4700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "T)수박주스블렌디드",
+      "productPrice": 7100,
+      "productUnit": 1,
+      "productUnitPrice": 7100,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 11800,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 11800
+    }
+  ],
+  "review": "NONEED"
+}

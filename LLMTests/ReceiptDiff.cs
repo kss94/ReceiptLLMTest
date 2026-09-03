@@ -19,6 +19,10 @@ static class ReceiptDiff
         "productDiscountName", "paymentMethod", "paymentName",
     ];
 
+    /// 정답에 없어도 실패로 보지 않는 최상위 필드. 모델이 계산 과정을 적는 자리이므로 채점하지 않는다.
+    /// 값은 {name}.actual.json에 그대로 남으니 실패를 들여다볼 때 거기서 확인한다.
+    static readonly HashSet<string> IgnoredRootFields = ["couponCalc"];
+
     /// 길이별 허용 편집거리. 2자 이하('쿠폰', '옵션', '할인' 등 규칙이 만들어내는 이름)는 정확히 일치해야 한다.
     static int Allowed(int length) => length <= 2 ? 0 : Math.Max(1, length / 6);
 
@@ -69,8 +73,9 @@ static class ReceiptDiff
 
             foreach ((string key, JsonNode? value) in ao)
             {
-                if (!eo.ContainsKey(key))
-                    report.Diffs.Add($"{Join(path, key)}: 정답에 없는 필드 (actual={Text(value)})");
+                if (eo.ContainsKey(key)) continue;
+                if (path.Length == 0 && IgnoredRootFields.Contains(key)) continue;
+                report.Diffs.Add($"{Join(path, key)}: 정답에 없는 필드 (actual={Text(value)})");
             }
 
             return;

@@ -1,0 +1,68 @@
+{
+  "receiptDate": "2026-05-24",
+  "receiptTime": "13:30:40",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "나주혁신DT점",
+  "address": null,
+  "totalOrderPrice": 13500,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "(원형)촉촉딸기초코",
+      "productPrice": 8000,
+      "productUnit": 1,
+      "productUnitPrice": 8000,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -1360,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "I-G)아메리카노",
+      "productPrice": 5600,
+      "productUnit": 1,
+      "productUnitPrice": 5600,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -1360,
+          "optionUnit": 1
+        }
+      ]
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "통신사제휴할인",
+      "discountPrice": -100
+    }
+  ],
+  "totalPaymentPrice": 10780,
+  "paymentItems": [
+    {
+      "paymentMethod": "신용카드",
+      "paymentName": null,
+      "paymentPrice": 5580
+    },
+    {
+      "paymentMethod": "아이넘버",
+      "paymentName": null,
+      "paymentPrice": 4700
+    },
+    {
+      "paymentMethod": "KT",
+      "paymentName": null,
+      "paymentPrice": 500
+    }
+  ],
+  "review": "NONEED"
+}

@@ -1,0 +1,83 @@
+{
+  "receiptDate": "2026-05-16",
+  "receiptTime": "18:59:39",
+  "receiptCnt": 3,
+  "storeName": "STARBUCKS",
+  "storeSubName": "김해율하점",
+  "address": null,
+  "totalOrderPrice": 72800,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "토이처비돔473",
+      "productPrice": 44850,
+      "productUnit": 1,
+      "productUnitPrice": 44850,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -10850,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "소시지 브레드",
+      "productPrice": 4700,
+      "productUnit": 1,
+      "productUnitPrice": 4700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "T)버즈키위Fiz",
+      "productPrice": 10850,
+      "productUnit": 1,
+      "productUnitPrice": 10850,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -10850,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "G)제주말차F",
+      "productPrice": 7100,
+      "productUnit": 1,
+      "productUnitPrice": 7100,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "바닐라빈 젤라또",
+      "productPrice": 5300,
+      "productUnit": 1,
+      "productUnitPrice": 5300,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 51100,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 51100
+    }
+  ],
+  "review": "NONEED"
+}

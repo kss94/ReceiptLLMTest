@@ -1,0 +1,72 @@
+{
+  "receiptDate": "2026-05-16",
+  "receiptTime": "17:52:42",
+  "receiptCnt": 3,
+  "storeName": "STARBUCKS",
+  "storeSubName": "자갈치역점",
+  "address": null,
+  "totalOrderPrice": 12000,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "T)카페라떼",
+      "productPrice": 3000,
+      "productUnit": 1,
+      "productUnitPrice": 3000,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "1샷",
+          "optionPrice": 800,
+          "optionUnit": 1
+        },
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -3000,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "T)카페라떼",
+      "productPrice": 5200,
+      "productUnit": 1,
+      "productUnitPrice": 5200,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "옵션",
+      "productPrice": 3000,
+      "productUnit": 1,
+      "productUnitPrice": 3000,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "쿠폰",
+      "productPrice": -3000,
+      "productUnit": 1,
+      "productUnitPrice": -3000,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 6000,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 6000
+    }
+  ],
+  "review": "NONEED"
+}

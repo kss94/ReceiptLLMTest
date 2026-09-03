@@ -1,0 +1,53 @@
+{
+  "receiptDate": "2026-05-10",
+  "receiptTime": "08:34:19",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "충정타워점",
+  "address": null,
+  "totalOrderPrice": 9600,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "G)카페라떼",
+      "productPrice": 3900,
+      "productUnit": 1,
+      "productUnitPrice": 3900,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -3300,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "K-에그바이트",
+      "productPrice": 5700,
+      "productUnit": 1,
+      "productUnitPrice": 5700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -3300,
+          "optionUnit": 1
+        }
+      ]
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 3000,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 3000
+    }
+  ],
+  "review": "NONEED"
+}
