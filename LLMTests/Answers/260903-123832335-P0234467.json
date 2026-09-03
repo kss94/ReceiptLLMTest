@@ -1,0 +1,72 @@
+{
+  "receiptDate": "2026-09-03",
+  "receiptTime": "11:30:05",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "판교아비뉴프랑R점",
+  "address": null,
+  "totalOrderPrice": 16000,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-V)블랙GL",
+      "productPrice": 8300,
+      "productUnit": 1,
+      "productUnitPrice": 8300,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "옵션",
+      "productPrice": 3850,
+      "productUnit": 1,
+      "productUnitPrice": 3850,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "쿠폰",
+      "productPrice": -3850,
+      "productUnit": 1,
+      "productUnitPrice": -3850,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "햄루꼴라SW",
+      "productPrice": 3850,
+      "productUnit": 1,
+      "productUnitPrice": 3850,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -3850,
+          "optionUnit": 1
+        }
+      ]
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "할인",
+      "discountPrice": -1660
+    }
+  ],
+  "totalPaymentPrice": 6640,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 6640
+    }
+  ],
+  "review": "NONEED"
+}

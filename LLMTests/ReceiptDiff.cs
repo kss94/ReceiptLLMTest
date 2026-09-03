@@ -90,11 +90,28 @@ static class ReceiptDiff
             }
 
             if (ea.Count != aa.Count)
+            {
                 report.Diffs.Add($"{Label(path)}: 개수 다름 (expected={ea.Count}, actual={aa.Count})");
+                for (int i = 0; i < Math.Min(ea.Count, aa.Count); i++)
+                    Walk($"{path}[{i}]", ea[i], aa[i], report);
+                return;
+            }
 
-            for (int i = 0; i < Math.Min(ea.Count, aa.Count); i++)
-                Walk($"{path}[{i}]", ea[i], aa[i], report);
+            var inOrder = new Report();
+            for (int i = 0; i < ea.Count; i++)
+                Walk($"{path}[{i}]", ea[i], aa[i], inOrder);
 
+            // 항목이 같고 순서만 다르면 금액이 달라지지 않으므로 실패로 보지 않는다.
+            if (!inOrder.Ok && TryMatchAnyOrder(path, ea, aa, out Report reordered))
+            {
+                report.Fuzzy.Add($"~ {Label(path)}: 순서만 다름 " +
+                                 $"(expected: {Names(ea)} / actual: {Names(aa)})");
+                report.Fuzzy.AddRange(reordered.Fuzzy);
+                return;
+            }
+
+            report.Diffs.AddRange(inOrder.Diffs);
+            report.Fuzzy.AddRange(inOrder.Fuzzy);
             return;
         }
 
@@ -130,6 +147,44 @@ static class ReceiptDiff
 
         if (ev.Trim() != av.Trim())
             report.Diffs.Add($"{Label(path)}: expected=\"{ev}\", actual=\"{av}\"");
+    }
+
+    /// 기대 항목 하나하나를 아직 쓰지 않은 실제 항목과 짝지어 본다.
+    /// 전부 짝이 맞으면 순서만 다른 것이다.
+    static bool TryMatchAnyOrder(string path, JsonArray expected, JsonArray actual, out Report matched)
+    {
+        matched = new Report();
+        bool[] used = new bool[actual.Count];
+
+        for (int i = 0; i < expected.Count; i++)
+        {
+            int found = -1;
+            for (int j = 0; j < actual.Count && found < 0; j++)
+            {
+                if (used[j]) continue;
+                var trial = new Report();
+                Walk($"{path}[{i}]", expected[i], actual[j], trial);
+                if (trial.Ok) { found = j; matched.Fuzzy.AddRange(trial.Fuzzy); }
+            }
+            if (found < 0) return false;
+            used[found] = true;
+        }
+
+        return true;
+    }
+
+    /// 순서 차이를 눈으로 확인할 수 있게 항목 이름을 뽑는다.
+    static string Names(JsonArray array)
+    {
+        string[] keys = ["productName", "optionName", "discountName", "paymentMethod"];
+        var names = array.Select((node, i) =>
+        {
+            if (node is JsonObject o)
+                foreach (string key in keys)
+                    if (o.TryGetPropertyValue(key, out JsonNode? v) && v is not null) return Text(v);
+            return $"[{i}]";
+        });
+        return string.Join(", ", names);
     }
 
     static bool TryNumber(string s, out decimal value)

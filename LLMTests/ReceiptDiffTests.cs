@@ -103,6 +103,50 @@ public class ReceiptDiffTests
     }
 
     [Fact]
+    public void 항목_순서만_다르면_통과시킨다()
+    {
+        const string Two = """
+            {
+              "productItems": [
+                { "productName": "옵션", "productPrice": 800 },
+                { "productName": "쿠폰", "productPrice": -800 }
+              ]
+            }
+            """;
+        string swapped = """
+            {
+              "productItems": [
+                { "productName": "쿠폰", "productPrice": -800 },
+                { "productName": "옵션", "productPrice": 800 }
+              ]
+            }
+            """;
+
+        var report = ReceiptDiff.Compare(Two, swapped);
+
+        Assert.True(report.Ok, report.ToString());
+        Assert.Contains(report.Fuzzy, f => f.Contains("순서만 다름"));
+    }
+
+    [Fact]
+    public void 순서가_같아도_값이_다르면_실패시킨다()
+    {
+        const string Two = """
+            {
+              "productItems": [
+                { "productName": "옵션", "productPrice": 800 },
+                { "productName": "쿠폰", "productPrice": -800 }
+              ]
+            }
+            """;
+        string wrongAmount = Two.Replace("-800", "-900");
+
+        var report = ReceiptDiff.Compare(Two, wrongAmount);
+
+        Assert.False(report.Ok);
+    }
+
+    [Fact]
     public void 항목_개수가_다르면_실패시킨다()
     {
         var report = Compare(Expected.Replace("\"productOptionItems\": [ { \"optionName\": \"쿠폰\", \"optionPrice\": -2540 } ]", "\"productOptionItems\": []"));

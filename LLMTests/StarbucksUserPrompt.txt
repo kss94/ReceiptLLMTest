@@ -1,22 +1,23 @@
 JSON으로 반환하는 형식은 반드시 아래 형식을 사용해주세요.
 
 couponCalc는 쿠폰 계산 과정을 적는 필드입니다. 가장 먼저 채우고,
-이후 productItems의 쿠폰 금액은 여기 적은 값에서 가져오세요. (8-0번)
+이후 productItems의 쿠폰 금액은 여기 적은 값에서 그대로 가져오세요. (7-1번)
 
 {
   "couponCalc": {
     "couponTotal": "number",
-    "alphabetRows": [
+    "products": [
       {
-        "unitPriceText": "string",
         "productName": "string",
-        "isOption": "boolean",
-        "lineAmount": "number"
+        "unitPriceText": "string",
+        "isAlphabetProduct": "boolean",
+        "lineAmount": "number",
+        "alphabetOptionCount": "number"
       }
     ],
-    "productRowCount": "number",
-    "optionRowCount": "number",
-    "branch": "string",
+    "alphabetProductCount": "number",
+    "hasFloatingAlphabetOption": "boolean",
+    "unitCount": "number",
     "share": "number",
     "remainder": "number"
   },
