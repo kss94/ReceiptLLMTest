@@ -1,0 +1,37 @@
+{
+  "receiptDate": "2026-09-02",
+  "receiptTime": "12:57:58",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "신촌명물거리점",
+  "address": null,
+  "totalOrderPrice": 4500,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-T)브루드커피",
+      "productPrice": 4500,
+      "productUnit": 1,
+      "productUnitPrice": 4500,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "쿠폰",
+          "optionPrice": -2700,
+          "optionUnit": 1
+        }
+      ]
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 1800,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 1800
+    }
+  ],
+  "review": "NONEED"
+}

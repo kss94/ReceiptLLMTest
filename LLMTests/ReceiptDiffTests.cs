@@ -103,6 +103,18 @@ public class ReceiptDiffTests
     }
 
     [Fact]
+    public void null인_필드는_키가_없어도_통과시킨다()
+    {
+        string noAddress = Expected.Replace("\"address\": null,", "");
+
+        var missing = Compare(noAddress);
+        var extra = ReceiptDiff.Compare(noAddress, Expected);
+
+        Assert.True(missing.Ok, missing.ToString());
+        Assert.True(extra.Ok, extra.ToString());
+    }
+
+    [Fact]
     public void 항목_순서만_다르면_통과시킨다()
     {
         const string Two = """

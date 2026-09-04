@@ -1,17 +1,21 @@
 ﻿using Google.GenAI;
 using Google.GenAI.Types;
+using System.Runtime.CompilerServices;
 
 namespace LLMTests;
 
 public class UnitTest1(ITestOutputHelper output)
 {
-    const string APIKEY = "AQ.Ab8RN6Lr0pUVMpIW9HlA-q25iJbKWg07SExdnrziPrj1FURubQ";
-    const string AIMODEL = "gemini-3.5-flash-lite";
+    private const string APIKEY = "AQ.Ab8RN6Lr0pUVMpIW9HlA-q25iJbKWg07SExdnrziPrj1FURubQ";
+    private const string AIMODEL = "gemini-3.5-flash-lite";
     private readonly string[] _exts = [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"];
     private readonly Client _client = new(apiKey: APIKEY, httpOptions: new HttpOptions
     {
         RetryOptions = new HttpRetryOptions()
     });
+
+    /// 프롬프트·정답·이미지를 모두 출력 폴더 복사본이 아니라 소스 폴더에서 읽는다.
+    private static string ProjectDir([CallerFilePath] string path = "") => Path.GetDirectoryName(path)!;
 
     [Theory]
     [InlineData("22195")]
@@ -25,6 +29,8 @@ public class UnitTest1(ITestOutputHelper output)
     [InlineData("22369")]
     [InlineData("22390")]
     [InlineData("22435")]
+    [InlineData("22738")]
+    [InlineData("22876")]
     [InlineData("22784546")]
     [InlineData("260503-235859769-I0972880")]
     [InlineData("260510-131001182-K0122596")]
@@ -36,12 +42,12 @@ public class UnitTest1(ITestOutputHelper output)
     [InlineData("260903-123832335-P0234467")]
     public async Task Starbucks(string name)
     {
-        string systemPrompt = System.IO.File.ReadAllText("StarbucksSystemPrompt.txt");
-        string userPrompt = System.IO.File.ReadAllText("StarbucksUserPrompt.txt");
+        string systemPrompt = System.IO.File.ReadAllText(Path.Combine(ProjectDir(), "StarbucksSystemPrompt.txt"));
+        string userPrompt = System.IO.File.ReadAllText(Path.Combine(ProjectDir(), "StarbucksUserPrompt.txt"));
 
-        string expected = System.IO.File.ReadAllText($"Answers\\{name}.json");
+        string expected = System.IO.File.ReadAllText(Path.Combine(ProjectDir(), "Answers", $"{name}.json"));
 
-        var s = Directory.EnumerateFiles($"스타벅스\\{name}")
+        var s = Directory.EnumerateFiles(Path.Combine(ProjectDir(), "스타벅스", name))
             .Where(f => _exts.Contains(Path.GetExtension(f), StringComparer.OrdinalIgnoreCase))
             .ToDictionary(f => Path.GetFileName(f), System.IO.File.ReadAllBytes);
 
@@ -73,12 +79,14 @@ public class UnitTest1(ITestOutputHelper output)
         // Assert
         var report = ReceiptDiff.Compare(expected, actual);
         output.WriteLine($"리포트: {Save(name, actual, report)}");
-        if (report.Fuzzy.Count > 0) output.WriteLine(string.Join(System.Environment.NewLine, report.Fuzzy));
+        if (report.Fuzzy.Count > 0)
+            output.WriteLine(string.Join(System.Environment.NewLine, report.Fuzzy));
+
         Assert.True(report.Ok, $"{name}: {report.Diffs.Count}건 불일치{System.Environment.NewLine}{string.Join(System.Environment.NewLine, report.Diffs)}");
     }
 
     /// 응답 원본과 차이 목록을 출력 폴더에 남긴다. 프롬프트를 고칠 때 이 파일들만 보면 된다.
-    static string Save(string name, string actual, ReceiptDiff.Report report)
+    private static string Save(string name, string actual, ReceiptDiff.Report report)
     {
         string dir = Path.Combine(AppContext.BaseDirectory, "Diffs");
         Directory.CreateDirectory(dir);

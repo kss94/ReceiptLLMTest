@@ -9,6 +9,7 @@ namespace LLMTests;
 /// 영수증 JSON 비교기. 키 순서와 공백은 무시하고 차이를 필드 단위로 모아서 보고한다.
 /// 금액·수량은 값이 정확히 같아야 하고, 이름 계열 필드는 OCR 오독을 통과시킨다.
 /// (예: '카페 라떼' / '카페 리떼', '햄루꼴라SW' / '햄루폴라SW')
+/// 값이 null인 필드는 응답에서 키가 빠져도 같은 뜻으로 본다(그 반대도).
 /// </summary>
 static class ReceiptDiff
 {
@@ -68,13 +69,14 @@ static class ReceiptDiff
             {
                 string p = Join(path, key);
                 if (ao.ContainsKey(key)) Walk(p, value, ao[key], report);
-                else report.Diffs.Add($"{p}: 응답에 없음 (expected={Text(value)})");
+                else if (value is not null) report.Diffs.Add($"{p}: 응답에 없음 (expected={Text(value)})");
             }
 
             foreach ((string key, JsonNode? value) in ao)
             {
                 if (eo.ContainsKey(key)) continue;
                 if (path.Length == 0 && IgnoredRootFields.Contains(key)) continue;
+                if (value is null) continue;
                 report.Diffs.Add($"{Join(path, key)}: 정답에 없는 필드 (actual={Text(value)})");
             }
 

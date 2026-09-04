@@ -1,0 +1,56 @@
+{
+  "receiptDate": "2026-09-03",
+  "receiptTime": "13:23:56",
+  "receiptCnt": 1,
+  "storeName": "STARBUCKS",
+  "storeSubName": "창원경상대병원점",
+  "address": null,
+  "totalOrderPrice": 8300,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "I-G)블랙GL",
+      "productPrice": 7500,
+      "productUnit": 1,
+      "productUnitPrice": 7500,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "옵션",
+      "productPrice": 800,
+      "productUnit": 1,
+      "productUnitPrice": 800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    },
+    {
+      "productCode": null,
+      "productName": "쿠폰",
+      "productPrice": -800,
+      "productUnit": 1,
+      "productUnitPrice": -800,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "할인",
+      "discountPrice": -1500
+    }
+  ],
+  "totalPaymentPrice": 6000,
+  "paymentItems": [
+    {
+      "paymentMethod": "스타벅스카드",
+      "paymentName": null,
+      "paymentPrice": 6000
+    }
+  ],
+  "review": "NONEED"
+}
