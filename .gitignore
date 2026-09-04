@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# 러너가 남기는 실행 결과(응답 원본·차이·점수)
+/Runs/

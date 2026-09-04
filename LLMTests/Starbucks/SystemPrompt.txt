@@ -180,7 +180,9 @@ D 영역에 '쿠폰' 행이 없으면 이 절 전체를 건너뜁니다. 아무�
     P = 0 이고 O = 0 인 상품 → 쿠폰과 무관합니다. 그대로 둡니다.
 
  (1) P=1인 상품 — 각각 한 단위입니다. (옵션처리 O)
-     · productPrice = 그 행의 금액란 값 + 몫
+     · productPrice = couponCalc.restored에 그 상품으로 적어 둔 productPrice를 그대로 옮깁니다.
+       (= 그 행의 금액란 값 + 몫) ★ 금액란을 빼먹고 몫만 넣으면 틀립니다.
+         예) 금액란 34,000 / 몫 10,850 → productPrice 44,850
      · productUnitPrice = productPrice ÷ productUnit
      · productOptionItems에 { optionName: "쿠폰", optionPrice: −몫, optionUnit: 1 } 추가
      · 그 상품 밑의 알파벳 옵션 행(O)은 이 상품에 흡수됩니다. 단위로 세지 않고
@@ -233,22 +235,42 @@ JSON의 첫 필드는 couponCalc입니다. 아래 순서대로 채운 뒤, produ
       lineAmount          : 그 상품 행 금액란의 값
       alphabetOptionCount : 그 상품에 딸린 'ㄴ' 옵션 행 중 단가란에 알파벳이 인쇄된 행의 개수.
                             이 값이 그 상품의 O입니다. 없으면 0.
+      isFloatingAlphabetOption : ★ 바로 위 두 값만 보고 이 줄에서 바로 정합니다.
+                            isAlphabetProduct가 false이고 alphabetOptionCount가 1 이상이면 true,
+                            그 밖에는 전부 false입니다.
+                            (P=0인데 자기 밑에 알파벳 옵션을 달고 있는 상품이라는 뜻입니다.)
     ★ 알파벳은 상품 행에 있을 수도 있고 옵션 행에 있을 수도 있습니다. 둘은 다른 줄입니다.
         예) "T)카페라떼 5,200 / 1 / 5,200" 아래에 "ㄴ1샷 SBCD/C / 1 / 0"이 있는 경우
             → { productName: "T)카페라떼", unitPriceText: "5,200",
-                isAlphabetProduct: false, lineAmount: 5200, alphabetOptionCount: 1 }
+                isAlphabetProduct: false, lineAmount: 5200, alphabetOptionCount: 1,
+                isFloatingAlphabetOption: true }
             상품 행의 단가란은 숫자 5,200이므로 isAlphabetProduct는 false입니다.
             SBCD/C는 옵션 줄의 값이므로 alphabetOptionCount로만 셉니다.
+            isAlphabetProduct가 false인데 alphabetOptionCount가 1이므로
+            isFloatingAlphabetOption은 true입니다. 이 상품이 한 단위를 더 만듭니다.
  3) alphabetProductCount     = products 중 isAlphabetProduct가 true인 상품의 개수
-    hasFloatingAlphabetOption = products 중 isAlphabetProduct가 false이면서
-                                alphabetOptionCount가 1 이상인 상품이 하나라도 있으면 true
+    hasFloatingAlphabetOption = ★ products 중 isFloatingAlphabetOption이 true인 상품이
+                                하나라도 있으면 true, 하나도 없으면 false.
+                                2)에서 상품마다 이미 적어 둔 값을 훑기만 하세요.
+                                여기서 조건을 다시 따지지 마세요. 적어 둔 값과 어긋나면 틀린 것입니다.
     반드시 2)에 적은 목록을 세어서 구합니다. 목록과 개수가 어긋나면 틀린 것입니다.
  4) unitCount = alphabetProductCount + (hasFloatingAlphabetOption이 true면 1, false면 0)
  5) share     = couponTotal ÷ unitCount 의 몫 (1원 미만 버림). unitCount가 0이면 0.
     remainder = couponTotal − (share × unitCount). unitCount가 0이면 0.
- 6) 이후 "쿠폰" 금액은 −share 이며, 가장 위의 P=1 상품만 −(share + remainder)입니다.
+ 6) restored = products 중 isAlphabetProduct가 true인 상품마다 한 줄씩, 위에서 아래 순서로.
+    isAlphabetProduct가 false인 상품은 여기에 넣지 않습니다.
+      productName  : 그 상품 이름
+      lineAmount   : 2)에 적어 둔 그 상품의 lineAmount를 그대로 옮깁니다
+      productPrice : lineAmount + share 를 실제로 더한 값.
+                     가장 위의 한 줄만 lineAmount + share + remainder 입니다.
+    ★ 이 덧셈을 건너뛰고 share를 그대로 적는 실수가 잦습니다. 두 값을 눈으로 보고 더하세요.
+      lineAmount가 0이 아니면 productPrice는 반드시 share보다 큽니다.
+      productPrice가 share와 같아도 되는 줄은 lineAmount가 0인 줄뿐입니다.
+        예) lineAmount 34,000 / share 10,850 → productPrice 44,850 (10,850이 아닙니다)
+            lineAmount      0 / share 10,850 → productPrice 10,850
+ 7) 이후 "쿠폰" 금액은 −share 이며, 가장 위의 P=1 상품만 −(share + remainder)입니다.
     productItems에서 이 두 값 외의 숫자를 쿠폰 금액으로 쓰면 틀린 것입니다.
- 7) ★ 이 계산이 productItems에 만들어낼 항목의 개수는 아래로 정해집니다. 다르게 만들면
+ 8) ★ 이 계산이 productItems에 만들어낼 항목의 개수는 아래로 정해집니다. 다르게 만들면
     틀린 것입니다.
       · "쿠폰" 옵션이 붙는 상품의 수 = alphabetProductCount
         (isAlphabetProduct가 true인 상품에만 붙습니다. false인 상품에는 붙지 않습니다.)
@@ -379,6 +401,13 @@ JSON의 첫 필드는 couponCalc입니다. 아래 순서대로 채운 뒤, produ
 - 항목명에 '할인' 키워드가 포함되고, 오른쪽에 금액이 인쇄된 행만 포함합니다.
   예: "할인", "개인컵 할인", "제휴할인(KT)", "통신사제휴할인"
 - 금액이 인쇄되지 않은 문장은 항목이 아닙니다. (F 영역의 안내 문장)
+- ★ 이름에 '할인'이라는 글자가 없으면 discountItems가 아닙니다. 금액이 함께 인쇄되어
+  있어도 마찬가지입니다. 이름만 보고 판단하세요.
+- ★ discountItems는 C·D 영역에서만 읽습니다. E 영역('결제금액' 행 아래)에 인쇄된 행은
+  전부 결제수단이므로 10번에서 paymentItems로만 넣고 여기에는 넣지 않습니다.
+    예) E 영역의 '스타벅스카드 6,500', 'KT 800', '카카오페이 3,000'
+        → 전부 paymentItems입니다. 통신사 이름이 적혀 있어도 할인이 아닙니다.
+        같은 행을 discountItems에도 넣으면 금액이 두 번 반영되어 틀립니다.
 - '쿠폰'은 7번에서 반영했으므로 포함하지 않습니다.
 - ★ 같은 할인을 두 번 넣지 않습니다. 읽는 위치는 아래 한 곳뿐입니다.
     · D 영역에 그 할인 행이 인쇄되어 있으면 → D 영역의 금액을 씁니다.

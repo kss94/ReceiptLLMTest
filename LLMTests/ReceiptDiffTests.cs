@@ -199,4 +199,101 @@ public class ReceiptDiffTests
         Assert.False(report.Ok);
         Assert.Contains(report.Diffs, d => d.Contains("파싱 실패"));
     }
+
+    // ── 점수 ──────────────────────────────────────────────────────────────
+    // Ok는 합/불만 주므로 프롬프트가 나아졌는지를 판단하지 못한다.
+    // Score는 잎(스칼라 필드) 단위 정확도라 "17개 틀림"과 "1개 틀림"을 구분한다.
+
+    [Fact]
+    public void 완전히_같으면_만점이다()
+    {
+        var report = Compare(Expected);
+
+        Assert.Equal(1.0, report.Score);
+        Assert.Equal(8, report.Total);   // 이 정답이 가진 잎의 수
+    }
+
+    [Fact]
+    public void 한_필드만_틀리면_그_잎_하나만_깎인다()
+    {
+        var report = Compare(Expected.Replace("\"productPrice\": 6600", "\"productPrice\": 6599"));
+
+        Assert.False(report.Ok);
+        Assert.Equal(8, report.Total);
+        Assert.Equal(7, report.Matched);
+    }
+
+    [Fact]
+    public void 오독으로_통과시킨_이름은_맞힌_것으로_센다()
+    {
+        var report = Compare(Expected.Replace("카페 라떼", "카페 리떼"));
+
+        Assert.Equal(1.0, report.Score);
+    }
+
+    [Fact]
+    public void 더_많이_틀릴수록_점수가_낮다()
+    {
+        var one = Compare(Expected.Replace("\"productPrice\": 6600", "\"productPrice\": 6599"));
+        var two = Compare(Expected
+            .Replace("\"productPrice\": 6600", "\"productPrice\": 6599")
+            .Replace("\"totalOrderPrice\": 6600", "\"totalOrderPrice\": 1"));
+
+        Assert.True(two.Score < one.Score, $"{two.Score} < {one.Score}");
+    }
+
+    [Fact]
+    public void 비교하지_못한_잎도_오답으로_센다()
+    {
+        // 배열이 통째로 비면 그 안의 잎 2개(optionName, optionPrice)를 비교조차 못 한다.
+        var report = Compare(Expected.Replace(
+            "\"productOptionItems\": [ { \"optionName\": \"쿠폰\", \"optionPrice\": -2540 } ]",
+            "\"productOptionItems\": []"));
+
+        Assert.Equal(8, report.Total);
+        Assert.Equal(6, report.Matched);
+    }
+
+    [Fact]
+    public void 정답에_없는_필드는_페널티로_붙는다()
+    {
+        var report = Compare(Expected.Replace("\"review\": \"NONEED\"", "\"review\": \"NONEED\", \"tax\": 494"));
+
+        Assert.Equal(9, report.Total);
+        Assert.Equal(8, report.Matched);
+    }
+
+    [Fact]
+    public void 파싱_실패는_0점이다()
+    {
+        var report = Compare("{ \"totalOrderPrice\": ");
+
+        Assert.Equal(0.0, report.Score);
+    }
+
+    [Fact]
+    public void 순서만_다르면_만점이다()
+    {
+        const string Two = """
+            {
+              "productItems": [
+                { "productName": "옵션", "productPrice": 800 },
+                { "productName": "쿠폰", "productPrice": -800 }
+              ]
+            }
+            """;
+        string swapped = """
+            {
+              "productItems": [
+                { "productName": "쿠폰", "productPrice": -800 },
+                { "productName": "옵션", "productPrice": 800 }
+              ]
+            }
+            """;
+
+        var report = ReceiptDiff.Compare(Two, swapped);
+
+        Assert.Equal(1.0, report.Score);
+        Assert.Equal(4, report.Total);
+    }
 }

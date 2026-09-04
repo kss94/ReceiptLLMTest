@@ -35,7 +35,35 @@ public static class ReceiptDiff
         /// 오독으로 보고 통과시킨 이름. 실패는 아니지만 눈으로 확인할 값.
         public List<string> Fuzzy { get; } = [];
 
+        /// 채점한 잎의 수. 정답의 스칼라 필드 수에, 정답에 없는 응답 필드를 페널티로 더한 값.
+        public int Total { get; private set; }
+
+        /// 그중 맞힌 수. 오독으로 통과시킨 이름도 맞힌 것으로 센다.
+        public int Matched { get; private set; }
+
+        /// 0.0~1.0. 프롬프트를 고칠 때 이 값이 오르는지로 판단한다.
+        /// Ok가 false여도 점수는 높을 수 있다(한 필드만 틀린 경우).
+        public double Score => Total == 0 ? 1 : (double)Matched / Total;
+
         public bool Ok => Diffs.Count == 0;
+
+        /// 맞힌 잎 하나.
+        internal void Hit() { Total++; Matched++; }
+
+        /// 틀린 잎 하나. 비교는 했으므로 Total에만 들어간다.
+        internal void Fail() => Total++;
+
+        /// 비교조차 못 한 잎들(구조가 어긋나 건너뛴 부분). 전부 오답으로 센다.
+        internal void Miss(int leaves) => Total += leaves;
+
+        /// 하위 비교 결과를 그대로 흡수한다. 점수도 함께 합친다.
+        internal void Absorb(Report other)
+        {
+            Diffs.AddRange(other.Diffs);
+            Fuzzy.AddRange(other.Fuzzy);
+            Total += other.Total;
+            Matched += other.Matched;
+        }
 
         public override string ToString() => string.Join(Environment.NewLine, Diffs.Concat(Fuzzy));
     }
@@ -45,11 +73,12 @@ public static class ReceiptDiff
         var report = new Report();
         JsonNode? expected, actual;
 
+        // 파싱하지 못하면 잎을 하나도 세지 못한다. 그대로 두면 0/0이 만점이 되므로 0점으로 박는다.
         try { expected = JsonNode.Parse(expectedJson); }
-        catch (JsonException ex) { report.Diffs.Add($"(정답 파일): JSON 파싱 실패 - {ex.Message}"); return report; }
+        catch (JsonException ex) { report.Diffs.Add($"(정답 파일): JSON 파싱 실패 - {ex.Message}"); report.Fail(); return report; }
 
         try { actual = JsonNode.Parse(actualJson); }
-        catch (JsonException ex) { report.Diffs.Add($"(응답): JSON 파싱 실패 - {ex.Message}"); return report; }
+        catch (JsonException ex) { report.Diffs.Add($"(응답): JSON 파싱 실패 - {ex.Message}"); report.Fail(); return report; }
 
         Walk("", expected, actual, report);
         return report;
@@ -62,6 +91,7 @@ public static class ReceiptDiff
             if (actual is not JsonObject ao)
             {
                 report.Diffs.Add($"{Label(path)}: 객체가 아님 (actual={Text(actual)})");
+                report.Miss(CountLeaves(eo));
                 return;
             }
 
@@ -69,7 +99,12 @@ public static class ReceiptDiff
             {
                 string p = Join(path, key);
                 if (ao.ContainsKey(key)) Walk(p, value, ao[key], report);
-                else if (value is not null) report.Diffs.Add($"{p}: 응답에 없음 (expected={Text(value)})");
+                else if (value is null) report.Hit();   // 키가 없는 것과 null은 같은 뜻이다.
+                else
+                {
+                    report.Diffs.Add($"{p}: 응답에 없음 (expected={Text(value)})");
+                    report.Miss(CountLeaves(value));
+                }
             }
 
             foreach ((string key, JsonNode? value) in ao)
@@ -78,6 +113,7 @@ public static class ReceiptDiff
                 if (path.Length == 0 && IgnoredRootFields.Contains(key)) continue;
                 if (value is null) continue;
                 report.Diffs.Add($"{Join(path, key)}: 정답에 없는 필드 (actual={Text(value)})");
+                report.Miss(CountLeaves(value));
             }
 
             return;
@@ -88,14 +124,21 @@ public static class ReceiptDiff
             if (actual is not JsonArray aa)
             {
                 report.Diffs.Add($"{Label(path)}: 배열이 아님 (actual={Text(actual)})");
+                report.Miss(CountLeaves(ea));
                 return;
             }
 
             if (ea.Count != aa.Count)
             {
                 report.Diffs.Add($"{Label(path)}: 개수 다름 (expected={ea.Count}, actual={aa.Count})");
-                for (int i = 0; i < Math.Min(ea.Count, aa.Count); i++)
+
+                int overlap = Math.Min(ea.Count, aa.Count);
+                for (int i = 0; i < overlap; i++)
                     Walk($"{path}[{i}]", ea[i], aa[i], report);
+
+                // 짝이 없어 비교하지 못한 쪽은 양쪽 모두 오답으로 센다.
+                for (int i = overlap; i < ea.Count; i++) report.Miss(CountLeaves(ea[i]));
+                for (int j = overlap; j < aa.Count; j++) report.Miss(CountLeaves(aa[j]));
                 return;
             }
 
@@ -108,19 +151,22 @@ public static class ReceiptDiff
             {
                 report.Fuzzy.Add($"~ {Label(path)}: 순서만 다름 " +
                                  $"(expected: {Names(ea)} / actual: {Names(aa)})");
-                report.Fuzzy.AddRange(reordered.Fuzzy);
+                report.Absorb(reordered);
                 return;
             }
 
-            report.Diffs.AddRange(inOrder.Diffs);
-            report.Fuzzy.AddRange(inOrder.Fuzzy);
+            report.Absorb(inOrder);
             return;
         }
 
         if (expected is null || actual is null)
         {
-            if (expected is not null || actual is not null)
+            if (expected is null && actual is null) report.Hit();
+            else
+            {
                 report.Diffs.Add($"{Label(path)}: expected={Text(expected)}, actual={Text(actual)}");
+                report.Miss(CountLeaves(expected ?? actual));
+            }
             return;
         }
 
@@ -130,25 +176,30 @@ public static class ReceiptDiff
         if (FuzzyFields.Contains(Field(path)))
         {
             string e = Squeeze(ev), a = Squeeze(av);
-            if (e == a) return;
+            if (e == a) { report.Hit(); return; }
 
             int distance = Levenshtein(e, a);
             string line = $"{Label(path)}: expected=\"{ev}\", actual=\"{av}\" (편집거리 {distance}, 허용 {Allowed(e.Length)})";
 
-            if (distance <= Allowed(e.Length)) report.Fuzzy.Add($"~ {line}");
-            else report.Diffs.Add(line);
+            if (distance <= Allowed(e.Length)) { report.Fuzzy.Add($"~ {line}"); report.Hit(); }
+            else { report.Diffs.Add(line); report.Fail(); }
             return;
         }
 
         // 금액·수량: 표기(쉼표, 문자열/숫자)는 무시하고 값만 본다.
         if (TryNumber(ev, out decimal en) && TryNumber(av, out decimal an))
         {
-            if (en != an) report.Diffs.Add($"{Label(path)}: expected={ev}, actual={av}");
+            if (en == an) report.Hit();
+            else { report.Diffs.Add($"{Label(path)}: expected={ev}, actual={av}"); report.Fail(); }
             return;
         }
 
-        if (ev.Trim() != av.Trim())
+        if (ev.Trim() == av.Trim()) report.Hit();
+        else
+        {
             report.Diffs.Add($"{Label(path)}: expected=\"{ev}\", actual=\"{av}\"");
+            report.Fail();
+        }
     }
 
     /// 기대 항목 하나하나를 아직 쓰지 않은 실제 항목과 짝지어 본다.
@@ -166,7 +217,7 @@ public static class ReceiptDiff
                 if (used[j]) continue;
                 var trial = new Report();
                 Walk($"{path}[{i}]", expected[i], actual[j], trial);
-                if (trial.Ok) { found = j; matched.Fuzzy.AddRange(trial.Fuzzy); }
+                if (trial.Ok) { found = j; matched.Absorb(trial); }
             }
             if (found < 0) return false;
             used[found] = true;
@@ -188,6 +239,14 @@ public static class ReceiptDiff
         });
         return string.Join(", ", names);
     }
+
+    /// 채점 단위인 스칼라 잎의 개수. 빈 배열·빈 객체도 그 자체로 하나로 센다.
+    static int CountLeaves(JsonNode? node) => node switch
+    {
+        JsonObject o => o.Count == 0 ? 1 : o.Sum(kv => CountLeaves(kv.Value)),
+        JsonArray a => a.Count == 0 ? 1 : a.Sum(CountLeaves),
+        _ => 1,
+    };
 
     static bool TryNumber(string s, out decimal value)
     {

@@ -12,14 +12,22 @@ couponCalc는 쿠폰 계산 과정을 적는 필드입니다. 가장 먼저 채�
         "unitPriceText": "string",
         "isAlphabetProduct": "boolean",
         "lineAmount": "number",
-        "alphabetOptionCount": "number"
+        "alphabetOptionCount": "number",
+        "isFloatingAlphabetOption": "boolean"
       }
     ],
     "alphabetProductCount": "number",
     "hasFloatingAlphabetOption": "boolean",
     "unitCount": "number",
     "share": "number",
-    "remainder": "number"
+    "remainder": "number",
+    "restored": [
+      {
+        "productName": "string",
+        "lineAmount": "number",
+        "productPrice": "number"
+      }
+    ]
   },
   "receiptDate": "date",
   "receiptTime": "time",

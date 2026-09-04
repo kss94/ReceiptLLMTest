@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="Common/Common.csproj" />
   <Project Path="LLMTests/LLMTests.csproj" />
+  <Project Path="Runner/Runner.csproj" />
 </Solution>
