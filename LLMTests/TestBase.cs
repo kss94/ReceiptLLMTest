@@ -58,9 +58,9 @@ public abstract class TestBase
     }
 
     /// 응답 원본과 차이 목록을 출력 폴더에 남긴다. 프롬프트를 고칠 때 이 파일들만 보면 된다.
-    protected static string Save(string receiptId, string actual, ReceiptDiff.Report report)
+    protected string Save(string receiptId, string actual, ReceiptDiff.Report report)
     {
-        string dir = Path.Combine(AppContext.BaseDirectory, "Diffs");
+        string dir = Path.Combine(AppContext.BaseDirectory, "Diffs", Vendor);
         Directory.CreateDirectory(dir);
 
         System.IO.File.WriteAllText(Path.Combine(dir, $"{receiptId}.actual.json"), actual);
