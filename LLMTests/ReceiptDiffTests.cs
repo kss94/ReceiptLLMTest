@@ -1,3 +1,5 @@
+using Common;
+
 namespace LLMTests;
 
 /// ReceiptDiff의 판정 기준을 고정한다. API를 호출하지 않으므로 오프라인에서 돌아간다.

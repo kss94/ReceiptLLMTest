@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 
-namespace LLMTests;
+namespace Common;
 
 /// <summary>
 /// 영수증 JSON 비교기. 키 순서와 공백은 무시하고 차이를 필드 단위로 모아서 보고한다.
@@ -11,7 +11,7 @@ namespace LLMTests;
 /// (예: '카페 라떼' / '카페 리떼', '햄루꼴라SW' / '햄루폴라SW')
 /// 값이 null인 필드는 응답에서 키가 빠져도 같은 뜻으로 본다(그 반대도).
 /// </summary>
-static class ReceiptDiff
+public static class ReceiptDiff
 {
     /// 오독을 허용하는 필드. 나머지 문자열(receiptDate, receiptTime, review 등)은 정확히 일치해야 한다.
     static readonly HashSet<string> FuzzyFields =
