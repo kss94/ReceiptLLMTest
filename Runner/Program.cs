@@ -27,13 +27,11 @@ public static class Program
         try { Console.OutputEncoding = System.Text.Encoding.UTF8; } catch (IOException) { }
 
         Options options;
-        string apiKey;
+        // 키는 Common.ApiKey에 박혀 있다. 테스트와 같은 키를 쓴다.
+        string apiKey = ApiKey.Gemini;
         try
         {
             options = Options.Parse(args);
-            apiKey = Environment.GetEnvironmentVariable("GEMINI_API_KEY") is { Length: > 0 } key
-                ? key
-                : throw new ArgumentException("GEMINI_API_KEY 환경변수가 없습니다.");
         }
         catch (ArgumentException ex)
         {

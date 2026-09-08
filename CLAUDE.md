@@ -42,7 +42,7 @@ dotnet run --project Runner -- run --vendor Starbucks --repeat 2
 ```bash
 dotnet run --project Runner -- optimize --vendor Starbucks --repeat 2 --iterations 5
 ```
-`GEMINI_API_KEY` 환경변수가 필요하다. 인자 없이 `dotnet run --project Runner`를 치면
+키는 `Common/ApiKey.cs`에 박혀 있다. 인자 없이 `dotnet run --project Runner`를 치면
 전체 옵션이 나온다. 자세한 설명은 [Runner/README.md](Runner/README.md)에 있다.
 
 ## 구조

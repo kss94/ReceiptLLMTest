@@ -48,7 +48,6 @@ public sealed record Options
           --proposer <모델>   수정안을 내는 모델. 기본값은 뽑는 모델과 같다.
                               뽑는 모델보다 좋은 것을 쓰는 편이 낫다.
 
-        환경변수 GEMINI_API_KEY가 필요하다.
         run은 표준출력으로 결과 JSON을 낸다.  runner run --vendor Starbucks > result.json
         optimize는 원본 프롬프트를 덮어쓰지 않는다. 결과는 <out>/SystemPrompt.txt에 쓴다.
         """;

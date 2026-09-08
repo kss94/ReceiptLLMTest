@@ -5,11 +5,10 @@ namespace LLMTests;
 
 public abstract class TestBase
 {
-    protected const string APIKEY = "AQ.Ab8RN6Lr0pUVMpIW9HlA-q25iJbKWg07SExdnrziPrj1FURubQ";
     protected readonly ITestOutputHelper _output;
 
     /// 호출 설정은 Runner와 공유한다. 테스트와 러너의 점수가 같은 뜻이어야 한다.
-    protected readonly ReceiptExtractor _extractor = new(APIKEY);
+    protected readonly ReceiptExtractor _extractor = new(ApiKey.Gemini);
 
     public TestBase(ITestOutputHelper output)
     {

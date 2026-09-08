@@ -8,7 +8,7 @@ runner run      --vendor <이름>   프롬프트 하나를 전체 케이스에 �
 runner optimize --vendor <이름>   실패를 모델에 보여주고 절 하나씩 고쳐가며 점수를 올린다
 ```
 
-`GEMINI_API_KEY` 환경변수가 필요하다. `runner`만 치면 전체 옵션이 나온다.
+키는 `Common/ApiKey.cs`에 박혀 있다. `runner`만 치면 전체 옵션이 나온다.
 
 ## 왜 점수인가
 
