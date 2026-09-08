@@ -1,0 +1,41 @@
+{
+  "receiptDate": "2026-08-26",
+  "receiptTime": "08:10:11",
+  "receiptCnt": 1,
+  "storeName": "메가엠지씨커피",
+  "storeSubName": "양재역지하상가점",
+  "address": null,
+  "totalOrderPrice": 2000,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "아메리카노",
+      "productPrice": 2000,
+      "productUnit": 1,
+      "productUnitPrice": 2000,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "쿠폰 · 모바일 상품권",
+      "discountPrice": -2000
+    }
+  ],
+  "totalPaymentPrice": 0,
+  "paymentItems": [
+    {
+      "paymentMethod": "메가엠지씨커피 모바일금액권",
+      "paymentName": null,
+      "paymentPrice": 700
+    },
+    {
+      "paymentMethod": "메가엠지씨커피 모바일금액권",
+      "paymentName": null,
+      "paymentPrice": 1300
+    }
+  ],
+  "review": "NONEED"
+}

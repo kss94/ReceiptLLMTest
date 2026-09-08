@@ -1,0 +1,30 @@
+{
+  "receiptDate": "2026-08-31",
+  "receiptTime": "08:13:38",
+  "receiptCnt": 1,
+  "storeName": "메가엠지씨커피",
+  "storeSubName": "정자역점",
+  "address": null,
+  "totalOrderPrice": 5800,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "카페라떼",
+      "productPrice": 5800,
+      "productUnit": 2,
+      "productUnitPrice": 2900,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "쿠폰 · 모바일 상품권",
+      "discountPrice": -5800
+    }
+  ],
+  "totalPaymentPrice": 0,
+  "paymentItems": [],
+  "review": "NONEED"
+}

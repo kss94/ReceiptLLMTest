@@ -1,0 +1,41 @@
+{
+  "receiptDate": "2026-09-01",
+  "receiptTime": "20:00:58",
+  "receiptCnt": 1,
+  "storeName": "메가엠지씨커피",
+  "storeSubName": "정자엠코점",
+  "address": null,
+  "totalOrderPrice": 4400,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "(ICE)왕메가카페라떼",
+      "productPrice": 4400,
+      "productUnit": 1,
+      "productUnitPrice": 4400,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "쿠폰 · 모바일 상품권",
+      "discountPrice": -4000
+    }
+  ],
+  "totalPaymentPrice": 4400,
+  "paymentItems": [
+    {
+      "paymentMethod": "신용카드",
+      "paymentName": "네이버페이",
+      "paymentPrice": 400
+    },
+    {
+      "paymentMethod": "현금영수증 발급",
+      "paymentName": null,
+      "paymentPrice": 4000
+    }
+  ],
+  "review": "NONEED"
+}

@@ -1,4 +1,4 @@
-﻿using Common;
+using Common;
 
 namespace LLMTests;
 
@@ -8,16 +8,25 @@ public class ReceiptTests : TestBase
     {
     }
 
-    protected override string VendorName => "Starbucks";
-
-    /// Starbucks/Answers/*.json에서 읽는다. 정답을 추가하면 케이스가 저절로 늘어난다.
-    public static TheoryData<string> Cases => [.. Of("Starbucks").Cases()];
+    public static TheoryData<string> Cases(string vendorName) => [.. Of(vendorName).Cases()];
 
     [Theory]
-    [MemberData(nameof(Cases))]
-    public async Task Starbucks(string receiptId)
+    [MemberData(nameof(Cases), "Starbucks")]
+    public Task Starbucks(string receiptId)
     {
-        Vendor data = Data;
+        return RunCase("Starbucks", receiptId);
+    }
+
+    [Theory]
+    [MemberData(nameof(Cases), "Megacoffee")]
+    public Task Megacoffee(string receiptId)
+    {
+        return RunCase("Megacoffee", receiptId);
+    }
+
+    private async Task RunCase(string vendorName, string receiptId)
+    {
+        Vendor data = Of(vendorName);
         string systemPrompt = File.ReadAllText(data.SystemPromptPath);
         string userPrompt = File.ReadAllText(data.UserPromptPath);
         string expected = File.ReadAllText(data.AnswerPath(receiptId));
@@ -29,7 +38,7 @@ public class ReceiptTests : TestBase
         // Assert
         var report = ReceiptDiff.Compare(expected, actual);
         _output.WriteLine($"점수 {report.Score:F3} ({report.Matched}/{report.Total})");
-        _output.WriteLine($"리포트: {Save(receiptId, actual, report)}");
+        _output.WriteLine($"리포트: {Save(vendorName, receiptId, actual, report)}");
         if (report.Fuzzy.Count > 0)
             _output.WriteLine(string.Join(Environment.NewLine, report.Fuzzy));
 

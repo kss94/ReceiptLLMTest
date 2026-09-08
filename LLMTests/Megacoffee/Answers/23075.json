@@ -1,0 +1,36 @@
+{
+  "receiptDate": "2026-09-01",
+  "receiptTime": "19:51:42",
+  "receiptCnt": 1,
+  "storeName": "메가엠지씨커피",
+  "storeSubName": "정자엠코점",
+  "address": null,
+  "totalOrderPrice": 2900,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "밀크쉐이크",
+      "productPrice": 2900,
+      "productUnit": 1,
+      "productUnitPrice": 2900,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "쿠폰 · 모바일 상품권",
+      "discountPrice": -2000
+    }
+  ],
+  "totalPaymentPrice": 900,
+  "paymentItems": [
+    {
+      "paymentMethod": "신용카드",
+      "paymentName": "네이버페이",
+      "paymentPrice": 900
+    }
+  ],
+  "review": "NONEED"
+}

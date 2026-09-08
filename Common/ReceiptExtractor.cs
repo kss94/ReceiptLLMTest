@@ -3,7 +3,6 @@ using Google.GenAI.Types;
 
 // Google.GenAI.Types에도 File·Environment가 있어 이름이 겹친다.
 using File = System.IO.File;
-using Environment = System.Environment;
 
 namespace Common;
 
@@ -28,16 +27,6 @@ public sealed class ReceiptExtractor
             httpOptions: new HttpOptions { RetryOptions = new HttpRetryOptions() });
     }
 
-    /// GEMINI_API_KEY 환경변수로 만든다. 없으면 이유를 밝히고 실패한다.
-    public static ReceiptExtractor FromEnvironment()
-    {
-        string? key = Environment.GetEnvironmentVariable("GEMINI_API_KEY");
-        if (string.IsNullOrWhiteSpace(key))
-            throw new InvalidOperationException("GEMINI_API_KEY 환경변수가 없습니다.");
-
-        return new ReceiptExtractor(key);
-    }
-
     /// receiptDir 안의 이미지를 전부 한 요청에 붙여 한 번 호출한다.
     public async Task<string> ExtractAsync(
         string receiptDir, string systemPrompt, string userPrompt, CancellationToken ct = default)
@@ -59,7 +48,9 @@ public sealed class ReceiptExtractor
         List<Part> parts = [Part.FromText(userPrompt)];
         foreach (string path in images)
         {
-            parts.Add(Part.FromBytes(File.ReadAllBytes(path), MimeTypes.GetMimeType(Path.GetFileName(path))));
+            byte[] bytes = File.ReadAllBytes(path);
+            string mimeType = MimeTypes.GetMimeType(Path.GetFileName(path));
+            parts.Add(Part.FromBytes(bytes, mimeType));
         }
         return new Content { Parts = parts };
     }

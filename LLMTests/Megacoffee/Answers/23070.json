@@ -1,0 +1,30 @@
+{
+  "receiptDate": "2026-08-24",
+  "receiptTime": "11:38:22",
+  "receiptCnt": 1,
+  "storeName": "메가엠지씨커피",
+  "storeSubName": "구미확장단지점",
+  "address": null,
+  "totalOrderPrice": 4000,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "아메리카노",
+      "productPrice": 4000,
+      "productUnit": 2,
+      "productUnitPrice": 2000,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "쿠폰 · 모바일 상품권",
+      "discountPrice": -4000
+    }
+  ],
+  "totalPaymentPrice": 0,
+  "paymentItems": [],
+  "review": "NONEED"
+}
