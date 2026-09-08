@@ -24,17 +24,12 @@
       "discountPrice": -4000
     }
   ],
-  "totalPaymentPrice": 4400,
+  "totalPaymentPrice": 400,
   "paymentItems": [
     {
       "paymentMethod": "신용카드",
       "paymentName": "네이버페이",
       "paymentPrice": 400
-    },
-    {
-      "paymentMethod": "현금영수증 발급",
-      "paymentName": null,
-      "paymentPrice": 4000
     }
   ],
   "review": "NONEED"

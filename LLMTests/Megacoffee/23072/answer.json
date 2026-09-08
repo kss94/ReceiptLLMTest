@@ -25,17 +25,6 @@
     }
   ],
   "totalPaymentPrice": 0,
-  "paymentItems": [
-    {
-      "paymentMethod": "메가엠지씨커피 모바일금액권",
-      "paymentName": null,
-      "paymentPrice": 700
-    },
-    {
-      "paymentMethod": "메가엠지씨커피 모바일금액권",
-      "paymentName": null,
-      "paymentPrice": 1300
-    }
-  ],
+  "paymentItems": [],
   "review": "NONEED"
 }
