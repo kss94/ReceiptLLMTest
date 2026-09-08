@@ -58,22 +58,19 @@ dotnet run --project Runner -- optimize --vendor Starbucks --repeat 2 --iteratio
 LLMTests/<벤더>/
   SystemPrompt.txt       규칙서
   UserPrompt.txt         JSON 형식
-  Answers/<id>.json      정답. 이 파일이 있는 것만 채점 대상이다
-  Receipts/<id>/*.jpg    한 폴더의 이미지 전부가 한 요청으로 간다
+  <id>/answer.json       정답. 이 파일이 있는 폴더만 채점 대상이다
+  <id>/*.jpg             한 폴더의 이미지 전부가 한 요청으로 간다
 ```
 
-케이스 목록은 `Vendor.Cases()`가 `Answers/` 폴더에서 읽는다. 정답 파일을 하나 넣으면
+케이스 목록은 `Vendor.Cases()`가 벤더 폴더의 하위 폴더에서 읽는다. `answer.json`을 하나 넣으면
 xUnit 케이스와 Runner 케이스가 동시에 하나 늘어난다. `[InlineData]`를 적을 곳은 없다.
 벤더를 추가할 때는 클래스가 아니라 **`ReceiptTests`에 메서드를 하나 더 단다.**
 벤더 이름은 문자열로 `[MemberData]`와 `RunCase`에 넘긴다. 두 줄을 복사해 폴더 이름만
-바꾸면 되고, 하는 일은 `RunCase` 하나에 모여 있다. 정답이 아직 없는 벤더는
-`SkipTestWithoutData`가 받아준다(단, xunit.v3 4.0.0은 [SKIP]으로 찍고도 실패로 센다.
-어차피 이 클래스는 평소 실행에서 빠져 있어 상관없다).
+바꾸면 되고, 하는 일은 `RunCase` 하나에 모여 있다.
 
-다만 이 규약은 벤더 하나로만 돌려봤다. **정답이 있는 벤더는 Starbucks뿐이고
-Megacoffee는 프롬프트만 있다.** 무엇이 벤더
-공통이고 무엇이 스타벅스 전용인지는 두 번째 벤더가 생긴 뒤에 판단한다.
-공통 프롬프트를 미리 빼지 않는 것도 같은 이유다(Runner/README.md 마지막 절).
+벤더는 계속 늘어난다. **프롬프트는 벤더마다 따로 둔다.** 겹쳐 보이는 규칙이 있어도
+공통 프롬프트로 빼지 않는다. 한 벤더 프롬프트를 고쳐도 다른 벤더 점수는 움직이지 않는다.
+지금 정답이 있는 벤더는 Starbucks와 Megacoffee다.
 
 프롬프트·정답·이미지는 bin으로 복사하지 않는다. `TestBase.ProjectDir()`와
 `Options.RepoDir()`이 `[CallerFilePath]`로 **소스 폴더**를 잡는다. 빌드 출력의 사본을
@@ -113,13 +110,21 @@ Megacoffee는 프롬프트만 있다.** 무엇이 벤더
 
 ## 프롬프트를 고칠 때
 
-`SystemPrompt.txt`는 `■`로 시작하는 절 14개로 나뉜다(`■ 0. 공통 원칙` … `■ 11. review`).
-optimize는 **절 하나만** 모델에게 돌려받고 갈아끼우기는 `PromptDocument`가 한다.
-32KB를 통째로 다시 쓰게 하면 고치라고 하지 않은 450줄이 흔들리기 때문이다.
-절 제목을 바꾸거나 절을 추가·삭제하면 optimize의 안전장치(절 개수 비교)가 무너진다.
+프롬프트는 벤더마다 따로 쓴다. 아래 절 번호와 규칙은 Starbucks 것이다.
+
+Starbucks의 `SystemPrompt.txt`는 `■`로 시작하는 절 14개로 나뉜다
+(`■ 0. 공통 원칙` … `■ 11. review`). optimize는 **절 하나만** 모델에게 돌려받고
+갈아끼우기는 `PromptDocument`가 한다. 32KB를 통째로 다시 쓰게 하면 고치라고 하지 않은
+450줄이 흔들리기 때문이다. 절 제목을 바꾸거나 절을 추가·삭제하면 optimize의
+안전장치(절 개수 비교)가 무너진다.
 
 절의 내용은 전부 스타벅스 영수증 전용 규칙이다(영역 A~F 구분, 쿠폰 분할, 상품에 딸린
 'ㄴ' 옵션 행 …). 일반 영수증 규칙으로 읽지 말고, 고칠 일이 있으면 프롬프트를 직접 읽는다.
+
+`■` 절은 벤더가 **쓸 수도 있고 안 쓸 수도 있다.** 지켜야 하는 규약이 아니라 optimize를
+절 단위로 돌리기 위한 장치다. `PromptDocument`가 `■` 줄만 절 제목으로 보니, 쓰는
+프롬프트는 절 하나만 갈아끼우고 안 쓰는 프롬프트는(지금 Megacoffee에 `■`가 하나도 없다)
+optimize가 고칠 절을 못 고른다. 그 프롬프트는 직접 고치면 된다.
 
 코드와 얽힌 것은 부호 하나뿐이다. `discountPrice`는 이 저장소에서 **음수**이고
 `ReceiptCheck`의 검산식이 그 부호에 의존한다. 실서비스는 양수 규약이니 옮길 때 확인한다.

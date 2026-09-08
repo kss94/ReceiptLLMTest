@@ -22,17 +22,15 @@ public class VendorTests : IDisposable
     [Fact]
     public void 정답이_있는_영수증만_케이스가_된다()
     {
-        Directory.CreateDirectory(Path.Combine(_dir, "Answers"));
-        Directory.CreateDirectory(Path.Combine(_dir, "Receipts", "A"));
-        Directory.CreateDirectory(Path.Combine(_dir, "Receipts", "B"));   // 정답이 없다
-        File.WriteAllText(Path.Combine(_dir, "Answers", "A.json"), "{}");
-        File.WriteAllText(Path.Combine(_dir, "Answers", "C.json"), "{}"); // 영수증이 없다
+        Directory.CreateDirectory(Path.Combine(_dir, "A"));
+        Directory.CreateDirectory(Path.Combine(_dir, "B"));   // 정답이 없다
+        File.WriteAllText(Path.Combine(_dir, "A", "answer.json"), "{}");
 
         Assert.Equal(["A"], new Vendor(_dir).Cases());
     }
 
     [Fact]
-    public void 정답_폴더가_없으면_빈_목록이다()
+    public void 케이스_폴더가_없으면_빈_목록이다()
     {
         Assert.Empty(new Vendor(_dir).Cases());
     }

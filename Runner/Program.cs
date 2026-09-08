@@ -45,7 +45,7 @@ public static class Program
         string[] cases = (options.Cases ?? vendor.Cases()).ToArray();
         if (cases.Length == 0)
         {
-            Log($"{vendor.Name}: 채점할 케이스가 없습니다. (Answers/*.json 확인)");
+            Log($"{vendor.Name}: 채점할 케이스가 없습니다. (<id>/answer.json 확인)");
             return 2;
         }
 

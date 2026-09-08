@@ -84,21 +84,22 @@ diff LLMTests/Starbucks/SystemPrompt.txt Runs/<실행>/SystemPrompt.txt
 
 ## 벤더 추가
 
-코드를 고치지 않는다. 폴더만 만들면 된다.
+Runner는 코드를 고치지 않는다. 폴더만 만들면 `--vendor <이름>`으로 돌아간다.
 
 ```
 LLMTests/<벤더>/
   SystemPrompt.txt       규칙서
   UserPrompt.txt         JSON 형식
-  Answers/<id>.json      정답. 이 파일이 있는 것만 채점 대상이다
-  Receipts/<id>/*.jpg
+  <id>/answer.json       정답. 이 파일이 있는 폴더만 채점 대상이다
+  <id>/*.jpg
 ```
 
 파일 이름은 벤더가 달라도 이 두 개로 고정이다. 벤더 이름은 폴더가 나타낸다.
 다른 파일로 채점하고 싶으면 `--system`, `--user`로 경로를 직접 준다.
 
-`StarbucksTests`를 복사해 `VendorName`만 바꾸면 xUnit 케이스도 자동으로 붙는다.
-케이스 목록은 `Answers/` 폴더에서 읽으므로 `[InlineData]`를 적을 필요가 없다.
+xUnit으로도 돌리려면 거기만 한 번 손댄다. `ReceiptTests`의 벤더 메서드를 복사해
+벤더 이름이 들어간 두 군데(`[MemberData]`와 `RunCase`)를 바꾸면 케이스가 붙는다.
+케이스 목록은 케이스 폴더에서 읽으므로 `[InlineData]`를 적을 필요가 없다.
 
-> 벤더별로 겹치는 규칙(JSON 스키마, 공통 원칙)을 공통 프롬프트로 빼는 것은 **아직 하지 않았다.**
-> 벤더가 하나뿐이라 무엇이 진짜 공통인지 알 수 없다. 두 번째 벤더가 생긴 뒤에 판단해라.
+> 프롬프트는 **벤더마다 따로 둔다.** 겹쳐 보이는 규칙(JSON 스키마, 공통 원칙)이 있어도
+> 공통 프롬프트로 빼지 않는다. 벤더가 늘어나도 서로의 프롬프트를 건드리지 않는다.
