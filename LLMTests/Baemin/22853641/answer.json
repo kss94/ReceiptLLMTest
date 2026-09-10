@@ -1,0 +1,57 @@
+{
+  "receiptDate": "2026-09-01",
+  "receiptTime": "15:36:00",
+  "receiptCnt": 3,
+  "storeName": "배달의 민족",
+  "storeSubName": null,
+  "address": null,
+  "totalOrderPrice": 13800,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "말리 라떼",
+      "productPrice": 6900,
+      "productUnit": 1,
+      "productUnitPrice": 6900,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "펄",
+          "optionPrice": 1000,
+          "optionUnit": 1
+        },
+        {
+          "optionName": "치즈폼(함께 포장)",
+          "optionPrice": 1400,
+          "optionUnit": 1
+        }
+      ]
+    },
+    {
+      "productCode": null,
+      "productName": "피치우롱 라떼",
+      "productPrice": 6900,
+      "productUnit": 1,
+      "productUnitPrice": 6900,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 13200,
+  "paymentItems": [
+    {
+      "paymentMethod": "배달팁",
+      "paymentName": null,
+      "paymentPrice": 4800
+    },
+    {
+      "paymentMethod": "카카오페이",
+      "paymentName": null,
+      "paymentPrice": 13200
+    }
+  ],
+  "review": "NEED"
+}

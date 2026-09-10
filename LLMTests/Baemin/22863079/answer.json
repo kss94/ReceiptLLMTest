@@ -1,0 +1,51 @@
+{
+  "receiptDate": "2026-09-01",
+  "receiptTime": "11:39:00",
+  "receiptCnt": 1,
+  "storeName": "배달의 민족",
+  "storeSubName": null,
+  "address": null,
+  "totalOrderPrice": 18400,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "1인세트",
+      "productPrice": 17900,
+      "productUnit": 1,
+      "productUnitPrice": 17900,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "닭안심+닭다리살 반반 섞어주세요~",
+          "optionPrice": 500,
+          "optionUnit": 1
+        }
+      ]
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "배민클럽 할인",
+      "discountPrice": -3400
+    },
+    {
+      "discountName": "즉시할인",
+      "discountPrice": -2000
+    }
+  ],
+  "totalPaymentPrice": 16400,
+  "paymentItems": [
+    {
+      "paymentMethod": "배달팁",
+      "paymentName": null,
+      "paymentPrice": 3400
+    },
+    {
+      "paymentMethod": "네이버페이",
+      "paymentName": null,
+      "paymentPrice": 16400
+    }
+  ],
+  "review": "NEED"
+}
