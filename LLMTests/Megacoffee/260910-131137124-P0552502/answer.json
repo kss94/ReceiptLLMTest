@@ -23,8 +23,8 @@
   "totalPaymentPrice": 1700,
   "paymentItems": [
     {
-      "paymentMethod": "신용카드",
-      "paymentName": "롯데카드(삼성페이)",
+      "paymentMethod": "카드결제",
+      "paymentName": null,
       "paymentPrice": 1700
     }
   ],

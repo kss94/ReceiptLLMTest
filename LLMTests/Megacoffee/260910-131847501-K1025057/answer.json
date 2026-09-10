@@ -29,8 +29,8 @@
   "totalPaymentPrice": 2900,
   "paymentItems": [
     {
-      "paymentMethod": "신용카드",
-      "paymentName": "롯데카드",
+      "paymentMethod": "카드결제",
+      "paymentName": null,
       "paymentPrice": 2900
     }
   ],
