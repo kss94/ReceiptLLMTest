@@ -16,7 +16,7 @@ public static class ReceiptDiff
     /// 오독을 허용하는 필드. 나머지 문자열(receiptDate, receiptTime, review 등)은 정확히 일치해야 한다.
     static readonly HashSet<string> FuzzyFields =
     [
-        "storeSubName", "productName", "optionName", "discountName",
+        "storeName", "storeSubName", "productName", "optionName", "discountName",
         "productDiscountName", "paymentMethod", "paymentName",
     ];
 
@@ -172,6 +172,32 @@ public static class ReceiptDiff
 
         string ev = Text(expected), av = Text(actual);
 
+        // 정답에 '|'로 여러 표기를 적어 두면 그중 하나만 맞아도 통과한다.
+        // 같은 것을 가리키는 표기가 여럿일 때 쓴다. 예) "STARBUCKS|스타벅스"
+        string[] options = ev.Split('|', StringSplitOptions.TrimEntries);
+        if (options.Length > 1)
+        {
+            foreach (string option in options)
+            {
+                var trial = new Report();
+                Scalar(path, option, av, trial);
+                if (!trial.Ok) continue;
+
+                report.Absorb(trial);
+                return;
+            }
+
+            report.Diffs.Add($"{Label(path)}: 어느 표기와도 다름 (expected=\"{ev}\", actual=\"{av}\")");
+            report.Fail();
+            return;
+        }
+
+        Scalar(path, ev, av, report);
+    }
+
+    /// 스칼라 잎 하나를 비교한다.
+    static void Scalar(string path, string ev, string av, Report report)
+    {
         // 이름: 공백 차이는 무시하고, 남은 편집거리가 허용치 안이면 통과.
         if (FuzzyFields.Contains(Field(path)))
         {
@@ -277,7 +303,8 @@ public static class ReceiptDiff
         return prev[b.Length];
     }
 
-    static string Squeeze(string s) => Regex.Replace(s, @"\s+", "");
+    /// 이름 비교용 정규화. 공백과 대소문자 차이는 같은 이름으로 본다('starbucks' = 'STARBUCKS').
+    static string Squeeze(string s) => Regex.Replace(s, @"\s+", "").ToUpperInvariant();
 
     static string Join(string path, string key) => path.Length == 0 ? key : $"{path}.{key}";
 

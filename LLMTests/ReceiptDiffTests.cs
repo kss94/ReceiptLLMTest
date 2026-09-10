@@ -296,4 +296,34 @@ public class ReceiptDiffTests
         Assert.Equal(1.0, report.Score);
         Assert.Equal(4, report.Total);
     }
+
+    [Fact]
+    public void 정답에_적은_표기_중_하나만_맞으면_통과한다()
+    {
+        const string Brand = """{ "storeName": "STARBUCKS|스타벅스" }""";
+
+        Assert.Equal(1.0, ReceiptDiff.Compare(Brand, """{ "storeName": "STARBUCKS" }""").Score);
+        Assert.Equal(1.0, ReceiptDiff.Compare(Brand, """{ "storeName": "스타벅스" }""").Score);
+    }
+
+    [Fact]
+    public void 어느_표기와도_다르면_실패시킨다()
+    {
+        const string Brand = """{ "storeName": "STARBUCKS|스타벅스" }""";
+
+        var report = ReceiptDiff.Compare(Brand, """{ "storeName": "이마트" }""");
+
+        Assert.False(report.Ok);
+        Assert.Equal(0.0, report.Score);
+    }
+
+    [Fact]
+    public void 이름의_대소문자_차이는_차이로_보지_않는다()
+    {
+        var report = ReceiptDiff.Compare("""{ "storeName": "STARBUCKS" }""",
+                                         """{ "storeName": "Starbucks" }""");
+
+        Assert.True(report.Ok, report.ToString());
+        Assert.Empty(report.Fuzzy);
+    }
 }

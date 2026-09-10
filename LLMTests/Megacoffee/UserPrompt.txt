@@ -4,7 +4,7 @@ JSON으로 반환하는 형식은 반드시 아래 형식을 사용해주세요.
   "receiptDate": "date",
   "receiptTime": "time",
   "receiptCnt": "number",
-  "storeName": "메가엠지씨커피",
+  "storeName": "string",
   "storeSubName": "string",
   "address": "string",
   "totalOrderPrice": "number",
