@@ -1,0 +1,31 @@
+{
+  "receiptDate": "2026-09-10",
+  "receiptTime": "13:09:00",
+  "receiptCnt": 1,
+  "storeName": "메가엠지씨커피|메가MGC커피|메가커피|MEGA MGC COFFEE|MEGA COFFEE",
+  "storeSubName": "미아수유시장점",
+  "address": null,
+  "totalOrderPrice": 1700,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "[포장](HOT)아메리카노",
+      "productPrice": 1700,
+      "productUnit": 1,
+      "productUnitPrice": 1700,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": []
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 1700,
+  "paymentItems": [
+    {
+      "paymentMethod": "신용카드",
+      "paymentName": "롯데카드(삼성페이)",
+      "paymentPrice": 1700
+    }
+  ],
+  "review": "NONEED"
+}

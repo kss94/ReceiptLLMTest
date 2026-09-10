@@ -1,0 +1,37 @@
+{
+  "receiptDate": "2026-09-10",
+  "receiptTime": "12:55:00",
+  "receiptCnt": 1,
+  "storeName": "메가엠지씨커피|메가MGC커피|메가커피|MEGA MGC COFFEE|MEGA COFFEE",
+  "storeSubName": "고양신원마을점",
+  "address": null,
+  "totalOrderPrice": 2900,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "[포장] (ICE) 할메가커피",
+      "productPrice": 2300,
+      "productUnit": 1,
+      "productUnitPrice": 2300,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "샷 추가",
+          "optionPrice": 600,
+          "optionUnit": 1
+        }
+      ]
+    }
+  ],
+  "discountItems": [],
+  "totalPaymentPrice": 2900,
+  "paymentItems": [
+    {
+      "paymentMethod": "신용카드",
+      "paymentName": "롯데카드",
+      "paymentPrice": 2900
+    }
+  ],
+  "review": "NONEED"
+}
