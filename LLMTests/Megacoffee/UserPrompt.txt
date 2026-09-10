@@ -1,6 +1,7 @@
 JSON으로 반환하는 형식은 반드시 아래 형식을 사용해주세요.
 
 {
+  "receiptBrandId": "number",
   "receiptDate": "date",
   "receiptTime": "time",
   "receiptCnt": "number",
