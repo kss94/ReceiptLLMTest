@@ -28,7 +28,7 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
-	<!-- 프롬프트·정답·이미지는 복사하지 않는다. UnitTest1이 소스 폴더에서 직접 읽는다. -->
+	<!-- 프롬프트·정답·이미지는 복사하지 않는다. TestBase가 소스 폴더에서 직접 읽는다. -->
 	<ItemGroup>
 		<None Update="xunit.runner.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

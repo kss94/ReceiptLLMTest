@@ -50,7 +50,7 @@ public sealed class Evaluator
         return RunResult.From(_vendor.Name, label, _vendor.UserPromptPath, outDir, results, stopwatch.Elapsed);
     }
 
-    /// 한 케이스를 Repeat번 호출한다. 온도가 고정이라 응답에 편차가 있어 평균을 쓴다.
+    /// 한 케이스를 Repeat번 호출한다. 온도가 고정이 아니라 응답에 편차가 있어 평균을 쓴다.
     async Task<CaseResult> RunCase(
         string id, string systemPrompt, string userPrompt, string outDir, CancellationToken ct)
     {
