@@ -1,0 +1,50 @@
+JSON으로 반환하는 형식은 반드시 아래 형식을 사용해주세요.
+
+{
+  "receiptBrandId": "number",
+  "receiptDate": "date",
+  "receiptTime": "time",
+  "receiptCnt": "number",
+  "storeName": "string",
+  "storeSubName": "string",
+  "address": "string",
+  "totalOrderPrice": "number",
+  "productItems": [
+    {
+      "productCode": "string",
+      "productName": "string",
+      "productPrice": "number",
+      "productUnit": "number",
+      "productUnitPrice": "number",
+      "productDiscount": "number",
+      "productDiscountItems": [
+        {
+          "productDiscountName": "string",
+          "productDiscountPrice": "number"
+        }
+      ],
+      "productOptionItems": [
+        {
+          "optionName": "string",
+          "optionPrice": "number",
+          "optionUnit": "number"
+        }
+      ]
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "string",
+      "discountPrice": "number"
+    }
+  ],
+  "totalPaymentPrice": "number",
+  "paymentItems": [
+    {
+      "paymentMethod": "string",
+      "paymentName": "string",
+      "paymentPrice": "number"
+    }
+  ],
+  "review": "string"
+}

@@ -1,4 +1,5 @@
 {
+  "receiptBrandId": null,
   "receiptDate": "2026-09-01",
   "receiptTime": "17:10:00",
   "receiptCnt": 3,
@@ -18,11 +19,16 @@
       "productOptionItems": []
     }
   ],
-  "discountItems": [],
-  "totalPaymentPrice": -11100,
+  "discountItems": [
+    {
+      "discountName": "배민클럽 할인",
+      "discountPrice": -4100
+    }
+  ],
+  "totalPaymentPrice": 11100,
   "paymentItems": [
     {
-      "paymentMethod": "배달팁",
+      "paymentMethod": "배달팁|배달비",
       "paymentName": null,
       "paymentPrice": 4100
     },

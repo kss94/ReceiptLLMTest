@@ -24,6 +24,13 @@ public class ReceiptTests : TestBase
         return RunCase("Megacoffee", receiptId);
     }
 
+    [Theory]
+    [MemberData(nameof(Cases), "Baemin")]
+    public Task Baemin(string receiptId)
+    {
+        return RunCase("Baemin", receiptId);
+    }
+
     private async Task RunCase(string vendorName, string receiptId)
     {
         Vendor data = Of(vendorName);

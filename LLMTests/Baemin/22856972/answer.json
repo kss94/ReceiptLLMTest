@@ -1,4 +1,5 @@
 {
+  "receiptBrandId": null,
   "receiptDate": "2026-09-01",
   "receiptTime": "18:46:00",
   "receiptCnt": 1,
@@ -9,7 +10,7 @@
   "productItems": [
     {
       "productCode": null,
-      "productName": "[증정] 황.양.반] 황올 반+양념 반",
+      "productName": "[황.양.반] 황올 반+양념 반",
       "productPrice": 24000,
       "productUnit": 1,
       "productUnitPrice": 24000,
@@ -26,10 +27,6 @@
   ],
   "discountItems": [
     {
-      "discountName": "총 할인받은 금액",
-      "discountPrice": -2700
-    },
-    {
       "discountName": "배민클럽 할인",
       "discountPrice": -2700
     }
@@ -37,13 +34,13 @@
   "totalPaymentPrice": 25000,
   "paymentItems": [
     {
-      "paymentMethod": "배달팁",
+      "paymentMethod": "배달팁|배달비",
       "paymentName": null,
       "paymentPrice": 2700
     },
     {
-      "paymentMethod": "신용/체크카드 비씨카드",
-      "paymentName": null,
+      "paymentMethod": "신용/체크카드",
+      "paymentName": "비씨카드",
       "paymentPrice": 25000
     }
   ],

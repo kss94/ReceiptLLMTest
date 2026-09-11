@@ -1,11 +1,12 @@
 {
+  "receiptBrandId": null,
   "receiptDate": "2026-09-01",
   "receiptTime": "15:36:00",
   "receiptCnt": 3,
   "storeName": "배달의 민족",
   "storeSubName": null,
   "address": null,
-  "totalOrderPrice": 13800,
+  "totalOrderPrice": 16200,
   "productItems": [
     {
       "productCode": null,
@@ -39,11 +40,24 @@
       "productOptionItems": []
     }
   ],
-  "discountItems": [],
+  "discountItems": [
+    {
+      "discountName": "배민클럽 할인",
+      "discountPrice": -4800
+    },
+    {
+      "discountName": "즉시 할인",
+      "discountPrice": -1000
+    },
+    {
+      "discountName": "다른 쿠폰에 2천원 더 할인",
+      "discountPrice": -2000
+    }
+  ],
   "totalPaymentPrice": 13200,
   "paymentItems": [
     {
-      "paymentMethod": "배달팁",
+      "paymentMethod": "배달팁|배달비",
       "paymentName": null,
       "paymentPrice": 4800
     },

@@ -1,0 +1,82 @@
+{
+  "receiptBrandId": null,
+  "receiptDate": "2026-08-30",
+  "receiptTime": "16:57:00",
+  "receiptCnt": 3,
+  "storeName": "배달의 민족",
+  "storeSubName": null,
+  "address": null,
+  "totalOrderPrice": 43100,
+  "productItems": [
+    {
+      "productCode": null,
+      "productName": "반반 피자 L",
+      "productPrice": 24900,
+      "productUnit": 1,
+      "productUnitPrice": 24900,
+      "productDiscount": 0,
+      "productDiscountItems": [],
+      "productOptionItems": [
+        {
+          "optionName": "콤비네이션",
+          "optionPrice": 1000,
+          "optionUnit": 1
+        },
+        {
+          "optionName": "크리스피 페페로니  (치즈 밖)",
+          "optionPrice": 1500,
+          "optionUnit": 1
+        },
+        {
+          "optionName": "씬 (얇은 도우)",
+          "optionPrice": 1500,
+          "optionUnit": 1
+        },
+        {
+          "optionName": "치즈 오븐 스파게티",
+          "optionPrice": 6500,
+          "optionUnit": 1
+        },
+        {
+          "optionName": "훈제  치킨 반 마리",
+          "optionPrice": 7000,
+          "optionUnit": 1
+        },
+        {
+          "optionName": "피클 1개 추가",
+          "optionPrice": 500,
+          "optionUnit": 1
+        },
+        {
+          "optionName": "핫소스 1  개 추가",
+          "optionPrice": 200,
+          "optionUnit": 1
+        }
+      ]
+    }
+  ],
+  "discountItems": [
+    {
+      "discountName": "배민클럽 할인",
+      "discountPrice": -2700
+    },
+    {
+      "discountName": "즉시할인",
+      "discountPrice": -8000
+    }
+  ],
+  "totalPaymentPrice": 36100,
+  "paymentItems": [
+    {
+      "paymentMethod": "배달팁|배달비",
+      "paymentName": null,
+      "paymentPrice": 3700
+    },
+    {
+      "paymentMethod": "네이버페이",
+      "paymentName": null,
+      "paymentPrice": 36100
+    }
+  ],
+  "review": "NEED"
+}

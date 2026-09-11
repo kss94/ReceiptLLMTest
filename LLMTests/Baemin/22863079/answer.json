@@ -1,4 +1,5 @@
 {
+  "receiptBrandId": null,
   "receiptDate": "2026-09-01",
   "receiptTime": "11:39:00",
   "receiptCnt": 1,
@@ -37,7 +38,7 @@
   "totalPaymentPrice": 16400,
   "paymentItems": [
     {
-      "paymentMethod": "배달팁",
+      "paymentMethod": "배달팁|배달비",
       "paymentName": null,
       "paymentPrice": 3400
     },
